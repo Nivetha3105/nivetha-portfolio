@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nivetha R — AI & Data Science Engineer. Building intelligent solutions with data, code, and creativity. Portfolio showcasing projects, skills, and achievements.">
+    <meta name="keywords" content="Nivetha R, AI Engineer, Data Science, Portfolio, Machine Learning, Python, Projects">
+    <meta name="author" content="Nivetha R">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta property="og:title" content="Nivetha R — AI & Data Science Portfolio">
+    <meta property="og:description" content="Futuristic AI engineer blending intelligence, creativity, and engineering.">
+    <meta property="og:type" content="website">
+    <title>Nivetha R — AI & Data Science Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-inner">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-text">
+                <span class="loader-greeting">Initializing</span>
+                <span class="loader-dots">
+                    <span>.</span><span>.</span><span>.</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Follower -->
+    <div id="cursor-glow" class="cursor-glow"></div>
+    <div id="cursor-dot" class="cursor-dot"></div>
+
+    <!-- Floating Navigation -->
+    <nav id="main-nav" class="floating-nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">N<span class="logo-dot">.</span></a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <button id="command-center-btn" class="nav-cta magnetic-btn" aria-label="Open AI Command Center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Command</span>
+            </button>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-inner">
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#experience" class="mobile-link">Experience</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#achievements" class="mobile-link">Achievements</a>
+            <a href="#certifications" class="mobile-link">Certifications</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <!-- AI Command Center Modal -->
+    <div id="command-center" class="command-center">
+        <div class="command-overlay"></div>
+        <div class="command-panel">
+            <div class="command-header">
+                <div class="command-title-row">
+                    <div class="command-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>AI Command Center</h3>
+                </div>
+                <button id="command-close" class="command-close" aria-label="Close command center">&times;</button>
+            </div>
+            <div class="command-search-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="command-search" class="command-search" placeholder="Type a command or search..." autocomplete="off">
+            </div>
+            <div class="command-stats">
+                <div class="cmd-stat">
+                    <span class="cmd-stat-value">8.3</span>
+                    <span class="cmd-stat-label">CGPA</span>
+                </div>
+                <div class="cmd-stat">
+                    <span class="cmd-stat-value">7</span>
+                    <span class="cmd-stat-label">Certs</span>
+                </div>
+                <div class="cmd-stat">
+                    <span class="cmd-stat-value">3</span>
+                    <span class="cmd-stat-label">Projects</span>
+                </div>
+                <div class="cmd-stat">
+                    <span class="cmd-stat-value">2</span>
+                    <span class="cmd-stat-label">Hackathons</span>
+                </div>
+            </div>
+            <div class="command-list" id="command-list">
+                <div class="command-group-label">Navigation</div>
+                <button class="command-item" data-action="navigate" data-target="#hero">
+                    <span class="cmd-icon">🏠</span>
+                    <span class="cmd-text">Go to Home</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#about">
+                    <span class="cmd-icon">👤</span>
+                    <span class="cmd-text">About Me</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#experience">
+                    <span class="cmd-icon">💼</span>
+                    <span class="cmd-text">Experience</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#projects">
+                    <span class="cmd-icon">🚀</span>
+                    <span class="cmd-text">View Projects</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#skills">
+                    <span class="cmd-icon">⚡</span>
+                    <span class="cmd-text">Skills</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#achievements">
+                    <span class="cmd-icon">🏆</span>
+                    <span class="cmd-text">Achievements</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#certifications">
+                    <span class="cmd-icon">📜</span>
+                    <span class="cmd-text">Certifications</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="navigate" data-target="#contact">
+                    <span class="cmd-icon">✉️</span>
+                    <span class="cmd-text">Contact</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <div class="command-group-label">Quick Actions</div>
+                <button class="command-item" data-action="project" data-project="ethicacode">
+                    <span class="cmd-icon">🤖</span>
+                    <span class="cmd-text">Open EthicaCode (Featured)</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="project" data-project="expense">
+                    <span class="cmd-icon">💰</span>
+                    <span class="cmd-text">Open Expense Tracker</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="project" data-project="waste">
+                    <span class="cmd-icon">♻️</span>
+                    <span class="cmd-text">Open Waste Management System</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="resume">
+                    <span class="cmd-icon">📄</span>
+                    <span class="cmd-text">View Resume</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="link" data-url="https://www.linkedin.com/in/nivetha-ramesh-690776328">
+                    <span class="cmd-icon">🔗</span>
+                    <span class="cmd-text">Open LinkedIn</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+                <button class="command-item" data-action="link" data-url="https://github.com/">
+                    <span class="cmd-icon">🐙</span>
+                    <span class="cmd-text">Open GitHub</span>
+                    <span class="cmd-shortcut">↵</span>
+                </button>
+            </div>
+            <div class="command-footer">
+                <span>Press <kbd>Ctrl</kbd>+<kbd>K</kbd> to toggle</span>
+                <span>ESC to close</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="hero-section">
+        <canvas id="particle-canvas" class="particle-canvas"></canvas>
+        <div class="hero-grid-bg"></div>
+        <div class="hero-content hero-split">
+            <div class="hero-text">
+                <div class="hero-badge reveal-up">
+                    <span class="badge-dot"></span>
+                    <span>Available for Opportunities</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-line reveal-up" style="--delay: 0.1s">Hi, I'm</span>
+                    <span class="hero-name reveal-up" style="--delay: 0.25s">Nivetha<span class="name-accent">.</span></span>
+                </h1>
+                <p class="hero-subtitle reveal-up" style="--delay: 0.4s">AI &amp; Data Science Student</p>
+                <div class="hero-rotating reveal-up" style="--delay: 0.55s">
+                    <span class="rotating-label">I am</span>
+                    <div class="rotating-wrapper">
+                        <div class="rotating-text" id="rotating-text">
+                            <span>an AI Builder</span>
+                            <span>a Data Explorer</span>
+                            <span>a Problem Solver</span>
+                            <span>a Future Innovator</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cta reveal-up" style="--delay: 0.7s">
+                    <a href="#projects" class="btn btn-primary magnetic-btn">
+                        <span>View Projects</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary magnetic-btn" id="resume-btn">
+                        <span>View Resume</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost magnetic-btn">
+                        <span>Contact</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-photo reveal-up" style="--delay: 0.3s">
+                <div class="photo-container">
+                    <div class="photo-ring photo-ring-1"></div>
+                    <div class="photo-ring photo-ring-2"></div>
+                    <div class="photo-ring photo-ring-3"></div>
+                    <div class="photo-glow"></div>
+                    <div class="photo-frame">
+                        <img src="profile.jpeg" alt="Nivetha R — AI & Data Science Engineer" class="profile-img" />
+                    </div>
+                    <div class="photo-dots">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator reveal-up" style="--delay: 1s">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+        <div class="hero-ambient-orb hero-orb-1"></div>
+        <div class="hero-ambient-orb hero-orb-2"></div>
+        <div class="hero-ambient-orb hero-orb-3"></div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">01 — About</span>
+                <h2 class="section-title reveal-up">The Journey<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">From curiosity to creation — a story of building with purpose.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-story reveal-up">
+                    <div class="timeline-vertical">
+                        <div class="timeline-item" data-year="2024">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2024</span>
+                                <h4>The Beginning</h4>
+                                <p>Started B.Tech in Artificial Intelligence & Data Science at Easwari Engineering College, Chennai. Instantly drawn to the power of data and intelligent systems.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2024">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2024–25</span>
+                                <h4>Building Foundations</h4>
+                                <p>Mastered Python, Java, and data tools. Earned certifications from NPTEL, Cisco, Microsoft, and Deloitte. Built foundational projects in expense tracking and IoT.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2025</span>
+                                <h4>Into the Industry</h4>
+                                <p>Interned at DLK Technologies as a Data Analyst — transforming raw data into actionable insights. Then worked with Samsung on IoT & Arduino projects.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-year="2025">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2025–26</span>
+                                <h4>Making Impact</h4>
+                                <p>Built EthicaCode — an AI ethics auditing platform — at TNWISE Hackathon. Competed in SaRaM 2026 building a Smart Healthcare Risk Prediction System. Conquered the 100 Days LeetCode Challenge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats reveal-up">
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" data-target="8.3" data-decimal="true">0</div>
+                        <div class="stat-label">CGPA</div>
+                        <div class="stat-bar"><div class="stat-bar-fill" style="--fill: 83%"></div></div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" data-target="7">0</div>
+                        <div class="stat-label">Certifications</div>
+                        <div class="stat-bar"><div class="stat-bar-fill" style="--fill: 70%"></div></div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" data-target="3">0</div>
+                        <div class="stat-label">Projects</div>
+                        <div class="stat-bar"><div class="stat-bar-fill" style="--fill: 60%"></div></div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Hackathons</div>
+                        <div class="stat-bar"><div class="stat-bar-fill" style="--fill: 50%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EXPERIENCE SECTION ==================== -->
+    <section id="experience" class="section experience-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">02 — Experience</span>
+                <h2 class="section-title reveal-up">Where I've Worked<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">Real-world experience building intelligent systems.</p>
+            </div>
+            <div class="experience-timeline reveal-up">
+                <div class="exp-track" id="exp-track">
+                    <div class="exp-card glass-card" data-index="0">
+                        <div class="exp-card-header">
+                            <div class="exp-company-logo">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="exp-company">DLK Technologies</h4>
+                                <span class="exp-role">Data Analyst Intern</span>
+                            </div>
+                        </div>
+                        <span class="exp-date">July 2025</span>
+                        <ul class="exp-details">
+                            <li>Performed data preprocessing and analysis using Python</li>
+                            <li>Utilized NumPy and Pandas for efficient data transformation</li>
+                            <li>Generated insights to support data-driven decision making</li>
+                        </ul>
+                        <div class="exp-tech-tags">
+                            <span>Python</span><span>NumPy</span><span>Pandas</span><span>Data Analysis</span>
+                        </div>
+                    </div>
+                    <div class="exp-card glass-card" data-index="1">
+                        <div class="exp-card-header">
+                            <div class="exp-company-logo">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="exp-company">Samsung</h4>
+                                <span class="exp-role">IoT & Arduino Intern</span>
+                            </div>
+                        </div>
+                        <span class="exp-date">December 2025</span>
+                        <ul class="exp-details">
+                            <li>Worked on Arduino simulations and sensor integration</li>
+                            <li>Developed IoT-based systems with basic AI concepts</li>
+                            <li>Gained experience in real-time device communication and automation</li>
+                        </ul>
+                        <div class="exp-tech-tags">
+                            <span>Arduino</span><span>IoT</span><span>Sensors</span><span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">03 — Projects</span>
+                <h2 class="section-title reveal-up">What I've Built<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">From concept to creation — projects that solve real problems.</p>
+            </div>
+
+            <!-- Featured Project -->
+            <div class="featured-project reveal-up" id="project-ethicacode">
+                <div class="featured-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Featured Project
+                </div>
+                <div class="featured-content">
+                    <div class="featured-info">
+                        <h3 class="featured-title">EthicaCode</h3>
+                        <p class="featured-desc">An AI ethics auditing platform designed to detect bias and improve transparency in machine learning models. Features explainability scoring and ethical assessment tools to ensure responsible AI decision-making.</p>
+                        <div class="featured-impact">
+                            <div class="impact-item">
+                                <span class="impact-icon">🎯</span>
+                                <span>Bias Detection</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon">🔍</span>
+                                <span>ML Transparency</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon">⚖️</span>
+                                <span>Ethical Scoring</span>
+                            </div>
+                        </div>
+                        <div class="featured-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Machine Learning</span>
+                            <span class="tech-badge">AI Ethics</span>
+                            <span class="tech-badge">Explainable AI</span>
+                        </div>
+                        <div class="featured-actions">
+                            <button class="btn btn-primary magnetic-btn project-modal-trigger" data-project="ethicacode">
+                                <span>Explore Project</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="featured-visual">
+                        <div class="featured-mockup">
+                            <div class="mockup-window">
+                                <div class="mockup-dots"><span></span><span></span><span></span></div>
+                                <div class="mockup-content">
+                                    <div class="mockup-line" style="width: 60%"></div>
+                                    <div class="mockup-line" style="width: 80%"></div>
+                                    <div class="mockup-grid-mini">
+                                        <div class="mockup-block"></div>
+                                        <div class="mockup-block"></div>
+                                        <div class="mockup-block"></div>
+                                    </div>
+                                    <div class="mockup-chart">
+                                        <div class="chart-bar" style="--h: 60%"></div>
+                                        <div class="chart-bar" style="--h: 85%"></div>
+                                        <div class="chart-bar" style="--h: 45%"></div>
+                                        <div class="chart-bar" style="--h: 70%"></div>
+                                        <div class="chart-bar" style="--h: 92%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects -->
+            <div class="projects-grid">
+                <div class="project-card glass-card reveal-up" id="project-expense" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        </div>
+                        <h4 class="project-title">Expense Tracker</h4>
+                        <p class="project-desc">Application to track and categorize daily expenses with income-expense analysis for improved financial insights.</p>
+                        <div class="project-impact-mini">
+                            <span>📊 Financial Analytics</span>
+                            <span>📈 Budget Insights</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Python</span><span>Data Analysis</span><span>Visualization</span>
+                        </div>
+                        <button class="project-explore magnetic-btn project-modal-trigger" data-project="expense">
+                            Explore
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-card glass-card reveal-up" id="project-waste" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <h4 class="project-title">Waste Management System</h4>
+                        <p class="project-desc">Arduino-based system for automated dry and wet waste classification using sensor-based detection and segregation.</p>
+                        <div class="project-impact-mini">
+                            <span>♻️ Auto Segregation</span>
+                            <span>🔌 IoT Powered</span>
+                        </div>
+                        <div class="project-tech">
+                            <span>Arduino</span><span>IoT</span><span>Sensors</span>
+                        </div>
+                        <button class="project-explore magnetic-btn project-modal-trigger" data-project="waste">
+                            Explore
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="project-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-icon" id="modal-icon"></div>
+                <h3 class="modal-title" id="modal-title"></h3>
+                <p class="modal-desc" id="modal-desc"></p>
+                <div class="modal-details" id="modal-details"></div>
+                <div class="modal-tech" id="modal-tech"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">04 — Skills</span>
+                <h2 class="section-title reveal-up">Neural Network<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">An interconnected web of skills powering intelligent solutions.</p>
+            </div>
+            <div class="skills-constellation reveal-up">
+                <canvas id="skills-canvas" class="skills-canvas"></canvas>
+                <div class="skills-nodes" id="skills-nodes">
+                    <!-- Nodes populated by JS -->
+                </div>
+            </div>
+            <div class="skills-list reveal-up">
+                <div class="skill-category">
+                    <h4 class="skill-cat-title">Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-skill="python">Python</span>
+                        <span class="skill-tag" data-skill="java">Java</span>
+                        <span class="skill-tag" data-skill="sql">SQL</span>
+                        <span class="skill-tag" data-skill="c">C</span>
+                        <span class="skill-tag" data-skill="cpp">C++</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4 class="skill-cat-title">Tools & Libraries</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-skill="numpy">NumPy</span>
+                        <span class="skill-tag" data-skill="pandas">Pandas</span>
+                        <span class="skill-tag" data-skill="tableau">Tableau</span>
+                        <span class="skill-tag" data-skill="excel">Excel</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4 class="skill-cat-title">Core Competencies</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-skill="data-analysis">Data Analysis</span>
+                        <span class="skill-tag" data-skill="problem-solving">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ACHIEVEMENTS SECTION ==================== -->
+    <section id="achievements" class="section achievements-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">05 — Achievements</span>
+                <h2 class="section-title reveal-up">Achievement Wall<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">Milestones that define the journey.</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card glass-card reveal-up" data-tier="gold">
+                    <div class="achievement-medal">
+                        <div class="medal-glow"></div>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke="currentColor" stroke-width="1.5"/><text x="12" y="11" text-anchor="middle" fill="currentColor" font-size="7" font-weight="bold">94</text></svg>
+                    </div>
+                    <h4 class="achievement-title">NPTEL Topper Medal</h4>
+                    <p class="achievement-desc">Human Computer Interaction — scored <strong>94%</strong> and earned the prestigious Topper Medal</p>
+                    <div class="achievement-score">
+                        <span class="score-value" data-target="94">0</span><span class="score-suffix">%</span>
+                    </div>
+                </div>
+                <div class="achievement-card glass-card reveal-up" data-tier="silver">
+                    <div class="achievement-medal">
+                        <div class="medal-glow"></div>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <h4 class="achievement-title">100 Days LeetCode</h4>
+                    <p class="achievement-desc">Completed the grueling 100 Days LeetCode Coding Challenge — consistency meets mastery</p>
+                    <div class="achievement-score">
+                        <span class="score-value" data-target="100">0</span><span class="score-suffix"> days</span>
+                    </div>
+                </div>
+                <div class="achievement-card glass-card reveal-up" data-tier="bronze">
+                    <div class="achievement-medal">
+                        <div class="medal-glow"></div>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15a7 7 0 100-14 7 7 0 000 14z"/><path d="M8 15v5l4-2 4 2v-5"/></svg>
+                    </div>
+                    <h4 class="achievement-title">SaRaM 2026 Hackathon</h4>
+                    <p class="achievement-desc">Built an AI-based Smart Healthcare Risk Prediction System for early diagnosis and decision support</p>
+                    <div class="achievement-tags">
+                        <span>Healthcare AI</span>
+                        <span>Risk Prediction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CERTIFICATIONS SECTION ==================== -->
+    <section id="certifications" class="section certifications-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">06 — Certifications</span>
+                <h2 class="section-title reveal-up">Credentials<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">Continuous learning across technologies.</p>
+            </div>
+            <div class="certs-marquee reveal-up">
+                <div class="certs-track" id="certs-track">
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        </div>
+                        <h5 class="cert-title">NPTEL Blockchain & Its Applications</h5>
+                        <span class="cert-issuer">NPTEL / IIT</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Deloitte Data Analytics</h5>
+                        <span class="cert-issuer">Forage / Deloitte</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h5 class="cert-title">NPTEL IoT</h5>
+                        <span class="cert-issuer">NPTEL / IIT</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h5 class="cert-title">Cisco Python Essentials</h5>
+                        <span class="cert-issuer">Cisco Networking Academy</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h5 class="cert-title">Microsoft AI & Azure</h5>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Java Programming</h5>
+                        <span class="cert-issuer">Coursera</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Networking Essentials</h5>
+                        <span class="cert-issuer">Cisco Networking Academy</span>
+                    </div>
+                    <!-- Duplicates for seamless loop -->
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        </div>
+                        <h5 class="cert-title">NPTEL Blockchain & Its Applications</h5>
+                        <span class="cert-issuer">NPTEL / IIT</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Deloitte Data Analytics</h5>
+                        <span class="cert-issuer">Forage / Deloitte</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h5 class="cert-title">NPTEL IoT</h5>
+                        <span class="cert-issuer">NPTEL / IIT</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h5 class="cert-title">Cisco Python Essentials</h5>
+                        <span class="cert-issuer">Cisco Networking Academy</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h5 class="cert-title">Microsoft AI & Azure</h5>
+                        <span class="cert-issuer">Microsoft</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Java Programming</h5>
+                        <span class="cert-issuer">Coursera</span>
+                    </div>
+                    <div class="cert-card glass-card">
+                        <div class="cert-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        </div>
+                        <h5 class="cert-title">Networking Essentials</h5>
+                        <span class="cert-issuer">Cisco Networking Academy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">07 — Contact</span>
+                <h2 class="section-title reveal-up">Let's Connect<span class="title-accent">.</span></h2>
+                <p class="section-subtitle reveal-up">Have a project, question, or opportunity? Let's talk.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-up">
+                    <div class="contact-links">
+                        <a href="mailto:niveth3105@gmail.com" class="contact-link glass-card magnetic-btn" id="contact-email">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-value">niveth3105@gmail.com</span>
+                            </div>
+                            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nivetha-ramesh-690776328" target="_blank" rel="noopener noreferrer" class="contact-link glass-card magnetic-btn" id="contact-linkedin">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-link-label">LinkedIn</span>
+                                <span class="contact-link-value">Connect with me</span>
+                            </div>
+                            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-link glass-card magnetic-btn" id="contact-github">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-link-label">GitHub</span>
+                                <span class="contact-link-value">View my code</span>
+                            </div>
+                            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                        <a href="tel:9500660390" class="contact-link glass-card magnetic-btn" id="contact-phone">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact-link-label">Phone</span>
+                                <span class="contact-link-value">9500660390</span>
+                            </div>
+                            <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrap reveal-up">
+                    <form id="contact-form" class="contact-form glass-card">
+                        <div class="form-group">
+                            <label for="form-name">Name</label>
+                            <input type="text" id="form-name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email</label>
+                            <input type="email" id="form-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" name="message" placeholder="Tell me about your project or opportunity..." rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary magnetic-btn form-submit" id="form-submit">
+                            <span>Send Message</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                        <div id="form-success" class="form-success">
+                            <div class="success-check">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <p>Message sent successfully!</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <span class="footer-name">Nivetha R</span>
+                <span class="footer-divider">·</span>
+                <span class="footer-text">Built with passion & code</span>
+                <span class="footer-divider">·</span>
+                <span class="footer-year">2026</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
